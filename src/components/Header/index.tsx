@@ -1,17 +1,13 @@
-import { createFromIconfontCN } from '@ant-design/icons'
 import { Col, Menu, Row } from 'antd'
 import React from 'react'
+import { MyIcon } from '../../util'
 import './index.scss'
-
-const MyIcon = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2124777_4yxiduyyxnd.js', // 在 iconfont.cn 上生成
-})
 
 export default function Header() {
   return (
     <div className="header">
       <Row justify="center">
-        <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+        <Col xs={24} sm={24} md={10} lg={15} xl={12}>
           <span className="header-logo">Lero</span>
           <span className="header-txt">路漫漫其修远兮,吾将上下而求索</span>
         </Col>
