@@ -3,7 +3,7 @@ import React from 'react'
 import { MyIcon } from '../../util'
 import './index.scss'
 
-export default function PageHeader() {
+export default function Header() {
   return (
     <div className="header">
       <Row justify="center">
