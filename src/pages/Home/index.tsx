@@ -1,32 +1,68 @@
-import { Col, Menu, Row } from 'antd'
-import React from 'react'
-import { MyIcon } from '../../util'
+import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
+import { Col, List, Row } from 'antd'
+import React, { useState } from 'react'
 import './index.scss'
 
-export default function Header() {
+export default function PageList() {
+  const [listData, setListData] = useState([
+    {
+      title: '使用Nginx部署Vue项目',
+      context:
+        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+    },
+    {
+      title: '使用Nginx部署Vue项目',
+      context:
+        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+    },
+    {
+      title: '使用Nginx部署Vue项目',
+      context:
+        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+    },
+    {
+      title: '使用Nginx部署Vue项目',
+      context:
+        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+    },
+    {
+      title: '使用Nginx部署Vue项目',
+      context:
+        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+    },
+  ])
+
   return (
-    <div className="header">
-      <Row justify="center">
-        <Col xs={24} sm={24} md={10} lg={15} xl={12}>
-          <span className="header-logo">Lero</span>
-          <span className="header-txt">路漫漫其修远兮,吾将上下而求索</span>
+    <div className="home">
+      <Row className="home-main" justify="center">
+        <Col className="home-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+          <List
+            itemLayout="vertical"
+            dataSource={listData}
+            renderItem={(item) => (
+              <List.Item>
+                <div className="home-title">{item.title}</div>
+                <div className="home-icon">
+                  <span>
+                    <CalendarOutlined />
+                    2020-10-17
+                  </span>
+                  <span>
+                    <FolderOpenOutlined />
+                    vue
+                  </span>
+                </div>
+                <div className="home-context">
+                  {item.context}
+                  <div className="home-context_more">查看全文 {'>'}</div>
+                </div>
+              </List.Item>
+            )}
+          />
         </Col>
 
-        <Col className="memu-div" xs={0} sm={0} md={14} lg={8} xl={6}>
-          <Menu mode="horizontal">
-            <Menu.Item key="home" icon={<MyIcon type="icon-shouye" />}>
-              首页
-            </Menu.Item>
-            <Menu.Item key="article" icon={<MyIcon type="icon-16" />}>
-              文章
-            </Menu.Item>
-            <Menu.Item key="tag" icon={<MyIcon type="icon-tag" />}>
-              标签
-            </Menu.Item>
-            <Menu.Item key="about" icon={<MyIcon type="icon-guanyuwomen" />}>
-              关于
-            </Menu.Item>
-          </Menu>
+        <Col className="home-right" xs={0} sm={0} md={7} lg={5} xl={4}>
+          右侧
         </Col>
       </Row>
     </div>
