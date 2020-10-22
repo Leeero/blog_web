@@ -1,6 +1,7 @@
 import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
 import { Col, List, Row } from 'antd'
 import React, { useState } from 'react'
+import AuthorCard from '../../components/AuthorCard'
 import './index.scss'
 
 export default function PageList() {
@@ -62,7 +63,7 @@ export default function PageList() {
         </Col>
 
         <Col className="home-right" xs={0} sm={0} md={7} lg={5} xl={4}>
-          右侧
+          <AuthorCard />
         </Col>
       </Row>
     </div>

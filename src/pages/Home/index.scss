@@ -14,8 +14,23 @@
 .home-icon {
   padding: 0.5rem 0;
   color: #aaa;
+  span {
+    display: inline-block;
+    padding: 0 10px;
+  }
 }
-.home-icon span {
-  display: inline-block;
-  padding: 0 10px;
+
+.home-left {
+  background-color: #fff;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+.home-right {
+  margin-left: 0.5rem;
+
+  border-bottom: 1px solid #eee;
+}
+.home-main {
+  margin-top: 0.5rem;
 }
