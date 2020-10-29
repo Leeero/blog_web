@@ -1,8 +1,11 @@
+import { createBrowserHistory } from 'history'
 import React from 'react'
 import Loadable from 'react-loadable'
 import { renderRoutes } from 'react-router-config'
-import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import PageLoading from '../components/PageLoading'
+
+const history = createBrowserHistory()
 
 const Home = Loadable({
   loader: () => import('../pages/Home'),
@@ -20,5 +23,5 @@ const routesConfig = [
   { path: '/articleDetails', exact: true, component: ArticleDetails },
 ]
 
-const Router = () => <BrowserRouter>{renderRoutes(routesConfig)}</BrowserRouter>
-export default Router
+const Routers = () => <Router history={history}>{renderRoutes(routesConfig)}</Router>
+export default Routers

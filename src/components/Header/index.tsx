@@ -1,9 +1,26 @@
-import { MyIcon } from '@/util'
+import { getUrlRelativePath, MyIcon } from '@/util'
 import { Affix, Col, Menu, Row } from 'antd'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.scss'
 
 export default function PageHeader() {
+  const [activeMenu, setActiveMenu] = useState('home')
+
+  useEffect(() => {
+    const pathName = getUrlRelativePath()
+    switch (pathName) {
+      case '/':
+        setActiveMenu('home')
+        break
+      case '/articleDetails':
+        setActiveMenu('article')
+        break
+
+      default:
+        break
+    }
+  }, [])
+
   return (
     <Affix offsetTop={0}>
       <div className="header">
@@ -14,7 +31,7 @@ export default function PageHeader() {
           </Col>
 
           <Col className="memu-div" xs={0} sm={0} md={14} lg={8} xl={6}>
-            <Menu mode="horizontal">
+            <Menu mode="horizontal" selectedKeys={[activeMenu]}>
               <Menu.Item key="home" icon={<MyIcon type="icon-shouye" />}>
                 首页
               </Menu.Item>
