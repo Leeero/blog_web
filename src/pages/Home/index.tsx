@@ -1,4 +1,5 @@
 import AuthorCard from '@/components/AuthorCard'
+import RecommendedArticle from '@/components/RecommendedArticle'
 import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
 import { Col, List, Row } from 'antd'
 import React, { useState } from 'react'
@@ -66,6 +67,7 @@ export default function PageList() {
 
         <Col className="home-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <AuthorCard />
+          <RecommendedArticle />
         </Col>
       </Row>
     </div>

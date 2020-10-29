@@ -1,0 +1,14 @@
+.recommended {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.8rem 0.3rem;
+  border-radius: 0.3rem;
+  margin-top: 1rem;
+  &_title {
+    margin-left: 16px;
+    padding-left: 0.5rem;
+    border-left: 5px solid #1890ff;
+  }
+}
