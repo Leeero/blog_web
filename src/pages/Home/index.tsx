@@ -4,34 +4,36 @@ import { Col, List, Row } from 'antd'
 import React, { useState } from 'react'
 import './index.scss'
 
+const MOCK_DATA = [
+  {
+    title: '使用Nginx部署Vue项目',
+    context:
+      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+  },
+  {
+    title: '使用Nginx部署Vue项目',
+    context:
+      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+  },
+  {
+    title: '使用Nginx部署Vue项目',
+    context:
+      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+  },
+  {
+    title: '使用Nginx部署Vue项目',
+    context:
+      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+  },
+  {
+    title: '使用Nginx部署Vue项目',
+    context:
+      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
+  },
+]
+
 export default function PageList() {
-  const [listData, setListData] = useState([
-    {
-      title: '使用Nginx部署Vue项目',
-      context:
-        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-    },
-    {
-      title: '使用Nginx部署Vue项目',
-      context:
-        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-    },
-    {
-      title: '使用Nginx部署Vue项目',
-      context:
-        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-    },
-    {
-      title: '使用Nginx部署Vue项目',
-      context:
-        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-    },
-    {
-      title: '使用Nginx部署Vue项目',
-      context:
-        'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-    },
-  ])
+  const [listData, setListData] = useState(MOCK_DATA)
 
   return (
     <div className="home">
