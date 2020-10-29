@@ -3,6 +3,7 @@ import RecommendedArticle from '@/components/RecommendedArticle'
 import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
 import { Col, List, Row } from 'antd'
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import './index.scss'
 
 const MOCK_DATA = [
@@ -34,6 +35,8 @@ const MOCK_DATA = [
 ]
 
 export default function PageList() {
+  const history = useHistory()
+
   const [listData, setListData] = useState(MOCK_DATA)
 
   return (
@@ -56,7 +59,12 @@ export default function PageList() {
                     vue
                   </span>
                 </div>
-                <div className="home-context">
+                <div
+                  className="home-context"
+                  onClick={() => {
+                    history.push('/articleDetails')
+                  }}
+                >
                   {item.context}
                   <div className="home-context_more">查看全文 {'>'}</div>
                 </div>

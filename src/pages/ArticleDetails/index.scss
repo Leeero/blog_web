@@ -1,21 +1,33 @@
-.list-title {
-  font-size: 1.3rem;
-  color: #1e90ff;
-  padding: 0 0.5rem;
+.details_main {
+  margin-top: 0.5rem;
 }
-.list-context {
-  color: #777;
-  padding: 0.5rem;
-  &_more {
-    text-align: right;
-    color: #1890ff;
+.details_content {
+  background-color: #fff;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border-bottom: 1px solid #eee;
+  &-breadcrumb {
+    background: #e6f7ff;
+    padding: 0.5rem;
+  }
+  &-title {
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  &-icon {
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #cccccc;
+    span {
+      margin: 0 0.5rem;
+    }
+  }
+  &-markdown {
+    padding: 0 2rem;
   }
 }
-.list-icon {
-  padding: 0.5rem 0;
-  color: #aaa;
-}
-.list-icon span {
-  display: inline-block;
-  padding: 0 10px;
+.details_right {
+  margin-left: 0.5rem;
+  border-bottom: 1px solid #eee;
 }
