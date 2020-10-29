@@ -1,7 +1,7 @@
+import AuthorCard from '@/components/AuthorCard'
 import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
 import { Col, List, Row } from 'antd'
 import React, { useState } from 'react'
-import AuthorCard from '../../components/AuthorCard'
 import './index.scss'
 
 export default function PageList() {
