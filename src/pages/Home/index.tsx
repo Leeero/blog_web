@@ -1,4 +1,5 @@
 import AuthorCard from '@/components/AuthorCard'
+import PageHeader from '@/components/Header'
 import RecommendedArticle from '@/components/RecommendedArticle'
 import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
 import { Col, List, Row } from 'antd'
@@ -41,6 +42,7 @@ export default function PageList() {
 
   return (
     <div className="home">
+      <PageHeader />
       <Row className="home-main" justify="center">
         <Col className="home-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <List

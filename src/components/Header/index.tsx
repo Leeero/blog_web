@@ -1,9 +1,12 @@
 import { getUrlRelativePath, MyIcon } from '@/util'
 import { Affix, Col, Menu, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import './index.scss'
 
 export default function PageHeader() {
+  const history = useHistory()
+
   const [activeMenu, setActiveMenu] = useState('home')
 
   useEffect(() => {
@@ -21,6 +24,21 @@ export default function PageHeader() {
     }
   }, [])
 
+  /**
+   * 点击菜单事件
+   * @param e
+   */
+  const handleClickMenu = (e: any) => {
+    switch (e.key) {
+      case 'home':
+        history.push('/')
+        break
+      default:
+        break
+    }
+    setActiveMenu(e.key)
+  }
+
   return (
     <Affix offsetTop={0}>
       <div className="header">
@@ -31,7 +49,7 @@ export default function PageHeader() {
           </Col>
 
           <Col className="memu-div" xs={0} sm={0} md={14} lg={8} xl={6}>
-            <Menu mode="horizontal" selectedKeys={[activeMenu]}>
+            <Menu mode="horizontal" selectedKeys={[activeMenu]} onClick={(e) => handleClickMenu(e)}>
               <Menu.Item key="home" icon={<MyIcon type="icon-shouye" />}>
                 首页
               </Menu.Item>

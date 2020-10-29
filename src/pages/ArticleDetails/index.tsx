@@ -1,4 +1,5 @@
 import AuthorCard from '@/components/AuthorCard'
+import PageHeader from '@/components/Header'
 import { CalendarOutlined, FireOutlined, FolderOpenOutlined, HomeOutlined } from '@ant-design/icons'
 import { Affix, Breadcrumb, Col, Row } from 'antd'
 import MarkNav from 'markdown-navbar'
@@ -46,6 +47,7 @@ let markdown =
 export default function ArticleDetails() {
   return (
     <div className="details">
+      <PageHeader />
       <Row className="details_main" justify="center">
         <Col className="details_content" xs={24} sm={24} md={16} lg={18} xl={14}>
           <div className="details_content-breadcrumb">
