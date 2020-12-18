@@ -1,85 +1,90 @@
 import AuthorCard from '@/components/AuthorCard'
 import PageHeader from '@/components/Header'
 import RecommendedArticle from '@/components/RecommendedArticle'
+import { getArticleList } from '@/services/article'
 import { CalendarOutlined, FolderOpenOutlined } from '@ant-design/icons'
-import { Col, List, Row } from 'antd'
-import React, { useState } from 'react'
+import { Col, Empty, List, Row } from 'antd'
+import dayjs from 'dayjs'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './index.scss'
-
-const MOCK_DATA = [
-  {
-    title: '使用Nginx部署Vue项目',
-    context:
-      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-  },
-  {
-    title: '使用Nginx部署Vue项目',
-    context:
-      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-  },
-  {
-    title: '使用Nginx部署Vue项目',
-    context:
-      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-  },
-  {
-    title: '使用Nginx部署Vue项目',
-    context:
-      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-  },
-  {
-    title: '使用Nginx部署Vue项目',
-    context:
-      'Nginx是一个高性能的HTTP和反向代理服务器（反向代理就是通常所说的web服务器加速，它是一种通过在繁忙的web服务器和internet之间增加一个高速的web缓冲服务器来降低实际的web服务器的负载）',
-  },
-]
+export interface ArticleModel {
+  articleId: number
+  articleIntroduction: string
+  articleTitle: string
+  articleType: string
+  createTime: number
+}
 
 export default function PageList() {
   const history = useHistory()
 
-  const [listData, setListData] = useState(MOCK_DATA)
+  const [listData, setListData] = useState([])
+  const [isEmpty, setIsEmpty] = useState(false)
+
+  /**
+   * 获取文章列表
+   *
+   */
+  const handleGetArticleLists = async () => {
+    try {
+      const { articleLists } = await getArticleList()
+      setListData(articleLists)
+      setIsEmpty(articleLists.length === 0)
+      console.log('dayjs(', dayjs())
+    } catch (error) {
+      setIsEmpty(true)
+    }
+  }
+
+  useEffect(() => {
+    handleGetArticleLists()
+  }, [])
 
   return (
     <div className="home">
       <PageHeader />
-      <Row className="home-main" justify="center">
-        <Col className="home-left" xs={24} sm={24} md={16} lg={18} xl={14}>
-          <List
-            itemLayout="vertical"
-            dataSource={listData}
-            renderItem={(item) => (
-              <List.Item>
-                <div className="home-title">{item.title}</div>
-                <div className="home-icon">
-                  <span>
-                    <CalendarOutlined />
-                    2020-10-17
-                  </span>
-                  <span>
-                    <FolderOpenOutlined />
-                    vue
-                  </span>
-                </div>
-                <div
-                  className="home-context"
-                  onClick={() => {
-                    history.push('/articleDetails')
-                  }}
-                >
-                  {item.context}
-                  <div className="home-context_more">查看全文 {'>'}</div>
-                </div>
-              </List.Item>
-            )}
-          />
-        </Col>
+      {isEmpty ? (
+        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+      ) : (
+        <Row className="home-main" justify="center">
+          <Col className="home-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+            <List
+              itemLayout="vertical"
+              dataSource={listData}
+              renderItem={(item: ArticleModel) => (
+                <List.Item>
+                  <div className="home-title">{item.articleTitle}</div>
+                  <div className="home-icon">
+                    <span>
+                      <CalendarOutlined />
+                      {dayjs(item.createTime).format('YYYY-MM-DD HH:mm')}
+                    </span>
+                    <span>
+                      <FolderOpenOutlined />
+                      {item.articleType}
+                    </span>
+                  </div>
+                  <div
+                    className="home-context"
+                    onClick={() => {
+                      history.push('/articleDetails')
+                    }}
+                  >
+                    {item.articleIntroduction}
+                    <div className="home-context_more">查看全文 {'>'}</div>
+                  </div>
+                </List.Item>
+              )}
+            />
+          </Col>
 
-        <Col className="home-right" xs={0} sm={0} md={7} lg={5} xl={4}>
-          <AuthorCard />
-          <RecommendedArticle />
-        </Col>
-      </Row>
+          <Col className="home-right" xs={0} sm={0} md={7} lg={5} xl={4}>
+            <AuthorCard />
+            <RecommendedArticle />
+          </Col>
+        </Row>
+      )}
     </div>
   )
 }

@@ -21,6 +21,16 @@ module.exports = {
       ['@babel/plugin-proposal-decorators', { legacy: true }],
     ],
   },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://42.192.23.19:8081',
+        ws: false, // websocket
+        changeOrigin: true, //是否跨域
+        secure: false, // 如果是https接口，需要配置这个参数
+      },
+    },
+  },
   plugins: [
     {
       plugin: CracoLessPlugin,
